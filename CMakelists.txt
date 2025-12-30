@@ -1,0 +1,64 @@
+cmake_minimum_required(VERSION 3.15)
+project(SolarSystemSimulator3D)
+
+# Standard C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Options de compilation
+if(MSVC)
+    add_compile_options(/W4)
+else()
+    add_compile_options(-Wall -Wextra -pedantic)
+endif()
+
+# Trouver SDL3
+find_package(SDL3 REQUIRED CONFIG)
+
+# Si SDL3 n'est pas trouvé, décommentez et ajustez le chemin :
+# set(SDL3_DIR "/usr/local/lib/cmake/SDL3")
+# find_package(SDL3 REQUIRED CONFIG)
+
+# Liste des fichiers source (à mettre à jour au fur et à mesure)
+set(SOURCES
+    src/main.cpp
+    src/Vector3D.cpp
+    # src/Matrix4x4.cpp          # JOUR 2
+    # src/Camera.cpp             # JOUR 2
+    # src/Mesh.cpp               # JOUR 3
+    # src/Sphere.cpp             # JOUR 3
+    # src/Rasterizer.cpp         # JOUR 4
+    # src/CelestialBody.cpp      # JOUR 6
+    # src/SolarSystem.cpp        # JOUR 6
+    # src/Renderer3D.cpp         # JOUR 7
+    # src/Application.cpp        # JOUR 7
+)
+
+# Créer l'exécutable
+add_executable(${PROJECT_NAME} ${SOURCES})
+
+# Inclure les dossiers de headers
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+)
+
+# Lier SDL3
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
+
+# Copier SDL3 DLL sur Windows
+if(WIN32)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_FILE:SDL3::SDL3>
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>
+    )
+endif()
+
+# Message de confirmation
+message(STATUS "===========================================")
+message(STATUS "  Solar System Simulator 3D - Configuration")
+message(STATUS "===========================================")
+message(STATUS "Compilateur: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "Standard C++: ${CMAKE_CXX_STANDARD}")
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "===========================================")
