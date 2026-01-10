@@ -7,7 +7,9 @@
  * @class Sphere
  * @brief Génère une sphère 3D par subdivision latitude/longitude
  */
+// Correction d
 class Sphere : public Mesh {
+
 private:
     float radius;
     int sectors;  // Subdivisions horizontales (longitude)

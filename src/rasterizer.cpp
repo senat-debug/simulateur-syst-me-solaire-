@@ -1,5 +1,5 @@
 #include "Rasterizer.h"
-#include "Constants.h"
+#include "constants.h"
 #include <algorithm>
 #include <cmath>
 

@@ -32,8 +32,7 @@ public:
     /**
      * @brief Dessine le système complet
      */
-    void draw(Rasterizer* rasterizer, Camera* camera);
-    
+     void draw(Rasterizer* rasterizer, Camera* camera);
     /**
      * @brief Dessine les orbites (SDL simple)
      */
