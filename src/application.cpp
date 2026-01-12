@@ -1,7 +1,7 @@
 #include <iostream>
 #include <SDL3/SDL.h>
 #include "Application.h"
-#include "Constants.h"
+#include "constants.h"
 #include "vector3D.h"
 #include "matrix4x4.h"
 #include <iomanip>

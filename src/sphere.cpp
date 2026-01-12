@@ -1,8 +1,9 @@
-#include "sphere.h"
+#include "Sphere.h"
 #include "Constants.h"
 #include <cmath>
 
-sphere::Sphere(float radius, int sectors, int stacks)
+
+Sphere::Sphere(float radius, int sectors, int stacks)
     : radius(radius), sectors(sectors), stacks(stacks) {
     generate();
 }
@@ -11,7 +12,7 @@ Sphere::~Sphere() {
     clear();
 }
 
-void sphere::generate() {
+void Sphere::generate() {
     clear();
     
     float sectorStep = Constants::TWO_PI / sectors;
@@ -69,11 +70,11 @@ void sphere::generate() {
     }
 }
 
-void sphere::setRadius(float r) {
+void Sphere::setRadius(float r) {
     radius = r;
     generate();
 }
 
-float sphere::getRadius() const {
+float Sphere::getRadius() const {
     return radius;
 }

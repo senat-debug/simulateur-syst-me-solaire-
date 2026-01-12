@@ -1,7 +1,7 @@
 #include "Application.h"
 #include <SDL3/SDL.h>
-#include "Constants.h"
-#include "celestialbody.h"
+#include "constants.h"
+#include "CelestialBody.h"
 #include <iostream>
 
 /**
